@@ -7,9 +7,9 @@ import (
 )
 
 type Message struct {
-	Name string
-	Body string
-	Time int64
+	Name string `json:"name"`
+	Body string `json:"body,omitempty"`
+	Time int64  `json:"time"`
 }
 
 var json_example = `{
@@ -29,7 +29,7 @@ var json_example = `{
 
 func main() {
 	fmt.Println(json_example)
-	m := Message{"Alice", "Hello", 1294706395881547000}
+	m := Message{"Alice", "", 1294706395881547000}
 	b, _ := json.Marshal(m)
 	fmt.Printf("%s\n", b)
 	var m2 Message
